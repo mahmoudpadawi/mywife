@@ -1,0 +1,782 @@
+<title>نيلُ الحُب</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Aref+Ruqaa:wght@400;700&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+
+<style>
+/* ── tokens ── */
+:root {
+  --rose:    #AE4B67;
+  --rose-d:  #8B3050;
+  --gold:    #C9A96E;
+  --cream:   #FDF8F3;
+  --ink:     #1E1118;
+  --muted:   #7A5060;
+  --white:   #FFFFFF;
+  --card-bg: #FFFFFF;
+  --section-bg: #FDF8F3;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --cream:      #1A0F14;
+    --card-bg:    #2A1620;
+    --section-bg: #1A0F14;
+    --ink:        #F0E4EB;
+    --muted:      #B890A0;
+    --white:      #2A1620;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --cream:      #1A0F14;
+  --card-bg:    #2A1620;
+  --section-bg: #1A0F14;
+  --ink:        #F0E4EB;
+  --muted:      #B890A0;
+  --white:      #2A1620;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  direction: rtl;
+  overflow-x: hidden;
+  padding-left: max(0px, env(safe-area-inset-left, 0px));
+  padding-right: max(0px, env(safe-area-inset-right, 0px));
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100svh;
+  background: linear-gradient(160deg, var(--rose-d) 0%, var(--rose) 50%, #C06080 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px max(24px, env(safe-area-inset-left, 0px));
+  position: relative;
+  overflow: hidden;
+}
+
+/* petals bg */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 15% 20%, rgba(255,255,255,.10) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 85% 80%, rgba(0,0,0,.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.65);
+  margin-bottom: 18px;
+}
+
+.hero-title {
+  font-family: 'Aref Ruqaa', serif;
+  font-size: clamp(52px, 14vw, 96px);
+  color: var(--white);
+  line-height: 1.1;
+  text-shadow: 0 4px 32px rgba(0,0,0,.25);
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.hero-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 16px auto 0;
+  border-radius: 2px;
+}
+
+.hero-sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(16px, 4vw, 22px);
+  color: rgba(255,255,255,.80);
+  margin-top: 20px;
+  margin-bottom: 40px;
+  max-width: 480px;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  color: var(--rose);
+  font-family: 'Cairo', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 15px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(0,0,0,.20);
+  transition: transform .2s, box-shadow .2s;
+  cursor: pointer;
+  border: none;
+}
+.hero-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.28); }
+
+/* floating phones */
+.phones-wrap {
+  position: relative;
+  margin-top: 60px;
+  height: 320px;
+  width: 100%;
+  max-width: 500px;
+  flex-shrink: 0;
+}
+
+.phone-mock {
+  position: absolute;
+  width: 130px;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  border: 3px solid rgba(255,255,255,.3);
+}
+.phone-mock img { width: 100%; display: block; }
+.phone-a { left: 50%; transform: translateX(-50%) rotate(-8deg); top: 20px; z-index: 1; width: 140px; }
+.phone-b { left: 12%; top: 60px; z-index: 2; transform: rotate(4deg); }
+.phone-c { right: 8%; top: 50px; z-index: 2; transform: rotate(-4deg); }
+
+/* ── SECTION SHARED ── */
+section {
+  padding: 80px max(24px, env(safe-area-inset-left, 0px));
+  background: var(--section-bg);
+}
+section.alt { background: var(--card-bg); }
+
+.sec-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 10px;
+  text-align: center;
+}
+.sec-title {
+  font-family: 'Aref Ruqaa', serif;
+  font-size: clamp(28px, 7vw, 48px);
+  color: var(--ink);
+  text-align: center;
+  text-wrap: balance;
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+.sec-body {
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--muted);
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 48px;
+}
+
+/* ── FEATURES GRID ── */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.feat-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 16px rgba(174,75,103,.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform .2s;
+}
+.feat-card:hover { transform: translateY(-4px); }
+
+.feat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--rose-d), var(--rose));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+.feat-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.feat-desc {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+/* ── SCREENS SCROLL ── */
+.screens-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 12px 4px 24px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.screens-scroll::-webkit-scrollbar { display: none; }
+
+.screen-card {
+  flex-shrink: 0;
+  width: 180px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(174,75,103,.18);
+}
+.screen-placeholder {
+  width: 180px;
+  height: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255,255,255,.9);
+  text-align: center;
+  padding: 16px;
+}
+.screen-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* ── TESTIMONIALS ── */
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.testi-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 16px rgba(174,75,103,.07);
+  position: relative;
+}
+.testi-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.testi-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose-d), var(--gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+.testi-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+.testi-role { font-size: 12px; color: var(--muted); }
+.stars { color: var(--gold); font-size: 13px; margin-bottom: 12px; letter-spacing: 2px; }
+
+/* ── STATS ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 24px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.stat-box { text-align: center; }
+.stat-num {
+  font-family: 'Cairo', sans-serif;
+  font-size: clamp(36px, 9vw, 56px);
+  font-weight: 900;
+  color: var(--rose);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.stat-label { font-size: 13px; color: var(--muted); margin-top: 6px; font-weight: 600; }
+
+/* ── HOW IT WORKS ── */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  max-width: 860px;
+  margin: 0 auto;
+  counter-reset: step;
+}
+.step { text-align: center; position: relative; }
+.step-num {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose-d), var(--rose));
+  color: #fff;
+  font-size: 20px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+.step-title { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.step-desc { font-size: 14px; line-height: 1.75; color: var(--muted); }
+
+/* connector line between steps on wide screen */
+@media (min-width: 640px) {
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 26px;
+    left: calc(-50% + 26px);
+    width: calc(100% - 52px);
+    height: 1px;
+    background: var(--rose);
+    opacity: .25;
+    /* flip for RTL */
+    right: calc(-50% + 26px);
+    left: auto;
+  }
+}
+
+/* ── CTA BANNER ── */
+.cta-banner {
+  background: linear-gradient(135deg, var(--rose-d) 0%, var(--rose) 60%, #C06080 100%);
+  padding: 80px max(24px, env(safe-area-inset-left, 0px));
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,.12), transparent 70%);
+}
+.cta-banner .sec-title { color: #fff; }
+.cta-banner .sec-body  { color: rgba(255,255,255,.75); }
+.cta-btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+.btn-primary {
+  background: var(--white);
+  color: var(--rose);
+  font-family: 'Cairo', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(0,0,0,.2);
+  transition: transform .2s;
+}
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  font-family: 'Cairo', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 50px;
+  border: 2px solid rgba(255,255,255,.5);
+  cursor: pointer;
+  transition: border-color .2s;
+}
+.btn-outline:hover { border-color: #fff; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  padding: 40px max(24px, env(safe-area-inset-left, 0px)) max(40px, env(safe-area-inset-bottom, 0px));
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-brand {
+  font-family: 'Aref Ruqaa', serif;
+  font-size: 26px;
+  color: var(--white);
+}
+.footer-tagline {
+  font-size: 13px;
+  color: rgba(255,255,255,.4);
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.footer-links a {
+  font-size: 13px;
+  color: rgba(255,255,255,.55);
+  text-decoration: none;
+}
+.footer-links a:hover { color: rgba(255,255,255,.9); }
+
+/* gold divider */
+.divider {
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+/* fade-in on scroll */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-up { opacity: 1; transform: none; transition: none; }
+}
+</style>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <p class="hero-label">تطبيق دعوة الخطوبة</p>
+  <h1 class="hero-title">نيلُ الحُب</h1>
+  <p class="hero-sub">على ضفاف النيل بدأت حكايتنا<br>ابعت دعوتك بأسلوب فريد</p>
+  <button class="hero-cta" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">
+    اكتشف التطبيق
+    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+  </button>
+
+  <!-- phone mockups -->
+  <div class="phones-wrap">
+    <div class="phone-mock phone-b">
+      <div class="screen-placeholder" style="background:linear-gradient(160deg,#8B3050,#AE4B67)">
+        <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span>الغلاف</span>
+      </div>
+    </div>
+    <div class="phone-mock phone-a">
+      <div class="screen-placeholder" style="background:linear-gradient(160deg,#C9A96E,#AE4B67)">
+        <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span>الدعوة</span>
+      </div>
+    </div>
+    <div class="phone-mock phone-c">
+      <div class="screen-placeholder" style="background:linear-gradient(160deg,#AE4B67,#7A3055)">
+        <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>الضيوف</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ STATS ══════════════ -->
+<section class="alt fade-up" style="padding-top:60px;padding-bottom:60px">
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="stat-num" data-target="12000">0</div>
+      <div class="stat-label">دعوة أُرسلت</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" data-target="7">0</div>
+      <div class="stat-label">شاشات متكاملة</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" data-target="98">0</div>
+      <div class="stat-label">% رضا المستخدمين</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" data-target="5">0</div>
+      <div class="stat-label">دقائق للإعداد</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FEATURES ══════════════ -->
+<section id="features" class="fade-up">
+  <p class="sec-label">المميزات</p>
+  <h2 class="sec-title">كل ما تحتاجه في مكان واحد</h2>
+  <div class="divider" style="margin-bottom:48px"></div>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <div class="feat-title">دعوة رقمية أنيقة</div>
+      <div class="feat-desc">صمم دعوتك بتصميم راقٍ يعكس شخصيتك، وشاركها مع ضيوفك في ثوانٍ.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="feat-title">إدارة الضيوف</div>
+      <div class="feat-desc">تتبع قائمة المدعوين، تأكيدات الحضور، والإحصائيات الكاملة من لوحة تحكم واحدة.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div class="feat-title">عداد تنازلي</div>
+      <div class="feat-desc">احسب الأيام المتبقية للحفلة وشاركها مع الضيوف لتزيد من الإثارة والتشويق.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="feat-title">تفاصيل المكان</div>
+      <div class="feat-desc">أضف خريطة القاعة، كود الملابس، وكل التفاصيل اللازمة للضيوف بشكل جميل.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="feat-title">ذكريات الخطوبة</div>
+      <div class="feat-desc">اجمع صور لحظاتكم في جاليري أنيق مع اقتباسات رومانسية تخلّد الذكرى.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="feat-title">RSVP فوري</div>
+      <div class="feat-desc">استقبل تأكيدات الحضور من الضيوف مباشرةً وتابع النسب في الوقت الحقيقي.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ HOW IT WORKS ══════════════ -->
+<section class="alt fade-up">
+  <p class="sec-label">كيف يعمل</p>
+  <h2 class="sec-title">ثلاث خطوات فقط</h2>
+  <p class="sec-body">من الفكرة إلى الدعوة في دقائق معدودة</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">١</div>
+      <div class="step-title">أنشئ دعوتك</div>
+      <div class="step-desc">أدخل اسميكما وتفاصيل الحفلة وصمم الغلاف بالألوان التي تحبها.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">٢</div>
+      <div class="step-title">أضف الضيوف</div>
+      <div class="step-desc">اضف قائمة المدعوين وابعت لكل واحد رابط الدعوة الخاص بيه.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">٣</div>
+      <div class="step-title">تابع الردود</div>
+      <div class="step-desc">شوف مين هيحضر ومين اعتذر واستعد ليلة الخطوبة براحة.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SCREENS GALLERY ══════════════ -->
+<section class="fade-up">
+  <p class="sec-label">معاينة الشاشات</p>
+  <h2 class="sec-title">٧ شاشات متكاملة</h2>
+  <div class="divider" style="margin-bottom:32px"></div>
+  <div class="screens-scroll">
+    <div>
+      <div class="screen-card">
+        <div class="screen-placeholder" style="background:linear-gradient(160deg,#8B3050,#AE4B67);height:260px">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+      </div>
+      <p class="screen-label">الغلاف</p>
+    </div>
+    <div>
+      <div class="screen-card">
+        <div class="screen-placeholder" style="background:linear-gradient(160deg,#C9A96E,#AE4B67);height:260px">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+      </div>
+      <p class="screen-label">الدعوة</p>
+    </div>
+    <div>
+      <div class="screen-card">
+        <div class="screen-placeholder" style="background:linear-gradient(160deg,#7A3055,#AE4B67);height:260px">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/></svg>
+        </div>
+      </div>
+      <p class="screen-label">المكان</p>
+    </div>
+    <div>
+      <div class="screen-card">
+        <div class="screen-placeholder" style="background:linear-gradient(160deg,#AE4B67,#C97090);height:260px">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+      </div>
+      <p class="screen-label">تأكيد الحضور</p>
+    </div>
+    <div>
+      <div class="screen-card">
+        <div class="screen-placeholder" style="background:linear-gradient(160deg,#6B2545,#AE4B67);height:260px">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+      </div>
+      <p class="screen-label">لوحة التحكم</p>
+    </div>
+    <div>
+      <div class="screen-card">
+        <div class="screen-placeholder" style="background:linear-gradient(160deg,#C9A96E,#8B3050);height:260px">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+        </div>
+      </div>
+      <p class="screen-label">إضافة ضيف</p>
+    </div>
+    <div>
+      <div class="screen-card">
+        <div class="screen-placeholder" style="background:linear-gradient(160deg,#AE4B67,#6B2545);height:260px">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+      </div>
+      <p class="screen-label">لحظاتنا</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ TESTIMONIALS ══════════════ -->
+<section class="alt fade-up">
+  <p class="sec-label">آراء العروسين</p>
+  <h2 class="sec-title">قالوا عن تجربتهم</h2>
+  <div class="divider" style="margin-bottom:48px"></div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <div class="testi-quote">"التطبيق غيّر شكل دعوتنا تماماً، كل الضيوف اتكلموا عن التصميم الجميل والتنظيم الرائع."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">ن</div>
+        <div>
+          <div class="testi-name">نور وأحمد</div>
+          <div class="testi-role">خطوبة ٢٠٢٦ · القاهرة</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <div class="testi-quote">"سهّل علينا جداً تتبع من سيحضر ومن اعتذر، وفرنا وقت وجهد كتير في التنسيق."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">س</div>
+        <div>
+          <div class="testi-name">سارة وخالد</div>
+          <div class="testi-role">خطوبة ٢٠٢٥ · الإسكندرية</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <div class="testi-quote">"جاليري الذكريات كان من أجمل الأشياء في تطبيقنا، الضيوف لحد دلوقتي بيرجعوا يشوفوا الصور."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">م</div>
+        <div>
+          <div class="testi-name">مريم ويوسف</div>
+          <div class="testi-role">خطوبة ٢٠٢٥ · المنصورة</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CTA BANNER ══════════════ -->
+<section class="cta-banner fade-up">
+  <p class="sec-label" style="color:rgba(255,255,255,.6)">ابدأ الآن</p>
+  <h2 class="sec-title">خلّي خطوبتكم تفرق</h2>
+  <p class="sec-body">أنشئ دعوتك الرقمية دلوقتي واستقبل ردود الضيوف بأناقة وسهولة</p>
+  <div class="cta-btns">
+    <button class="btn-primary">ابدأ مجاناً</button>
+    <button class="btn-outline">شاهد العرض</button>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-brand">نيلُ الحُب</div>
+  <div class="footer-tagline">على ضفاف النيل بدأت حكايتنا · ٢٠٢٦</div>
+  <div class="footer-links">
+    <a href="#">سياسة الخصوصية</a>
+    <a href="#">الشروط والأحكام</a>
+    <a href="#">تواصل معنا</a>
+    <a href="#">عن التطبيق</a>
+  </div>
+</footer>
+
+<script>
+/* fade-up on scroll */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+/* count-up animation */
+function animateCount(el) {
+  const target = +el.dataset.target;
+  const dur = 1800;
+  const start = performance.now();
+  function step(now) {
+    const p = Math.min((now - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(ease * target).toLocaleString('ar-EG');
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = target.toLocaleString('ar-EG');
+  }
+  requestAnimationFrame(step);
+}
+const statsObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('[data-target]').forEach(animateCount);
+      statsObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.stats-row').forEach(el => statsObs.observe(el));
+</script>
